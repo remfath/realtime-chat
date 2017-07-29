@@ -25,11 +25,19 @@
         methods: {
             addMessage(message) {
                 this.messages.push(message);
+                axios.post('/messages', message).then(response => {
+                    console.info(response.data);
+                });
             }
         },
         components: {
             ChatLog,
             ChatComposer
+        },
+        created() {
+            axios.get('/messages').then(response => {
+                this.messages = response.data;
+            })
         }
     }
 </script>

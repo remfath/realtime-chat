@@ -1,7 +1,7 @@
 <template>
     <div class="chat-message">
-        <p>{{ message.user }}</p>
-        <p class="alert alert-success">{{ message.content }}</p>
+        <p class="message-user">{{ message.user.name }}</p>
+        <p class="message-content">{{ message.message }}</p>
     </div>
 </template>
 
@@ -9,9 +9,7 @@
 
     export default {
         data() {
-            return {
-
-            }
+            return {}
         },
         props: ['message']
     }
@@ -20,5 +18,18 @@
 <style type="text/scss" lang="scss" scoped>
     .chat-message {
         padding: 5px 15px;
+    }
+
+    .message-user {
+        font-size: 90%;
+        margin: 5px;
+    }
+
+    .message-content {
+        padding: 5px 10px;
+        background-color: #dff0d8;
+        border-color: #d6e9c6;
+        color: #3c763d;
+        border-radius: 3px;
     }
 </style>

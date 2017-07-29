@@ -17,8 +17,10 @@
             sendMessage() {
                 if (this.message) {
                     this.$emit('sent', {
-                        content: this.message,
-                        user: 'Jack'
+                        message: this.message,
+                        user: {
+                            name: $('.navbar-right .dropdown-toggle').text()
+                        }
                     });
                     this.message = '';
                 }

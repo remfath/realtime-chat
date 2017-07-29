@@ -42344,11 +42344,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         addMessage: function addMessage(message) {
             this.messages.push(message);
+            axios.post('/messages', message).then(function (response) {
+                console.info(response.data);
+            });
         }
     },
     components: {
         ChatLog: __WEBPACK_IMPORTED_MODULE_0__ChatLog_vue___default.a,
         ChatComposer: __WEBPACK_IMPORTED_MODULE_1__ChatComposer_vue___default.a
+    },
+    created: function created() {
+        var _this = this;
+
+        axios.get('/messages').then(function (response) {
+            _this.messages = response.data;
+        });
     }
 });
 
@@ -42543,7 +42553,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n.chat-message[data-v-8114d146] {\n  padding: 5px 15px;\n}\n", ""]);
+exports.push([module.i, "\n.chat-message[data-v-8114d146] {\n  padding: 5px 15px;\n}\n.message-user[data-v-8114d146] {\n  font-size: 90%;\n  margin: 5px;\n}\n.message-content[data-v-8114d146] {\n  padding: 5px 10px;\n  background-color: #dff0d8;\n  border-color: #d6e9c6;\n  color: #3c763d;\n  border-radius: 3px;\n}\n", ""]);
 
 // exports
 
@@ -42578,9 +42588,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "chat-message"
-  }, [_c('p', [_vm._v(_vm._s(_vm.message.user))]), _vm._v(" "), _c('p', {
-    staticClass: "alert alert-success"
-  }, [_vm._v(_vm._s(_vm.message.content))])])
+  }, [_c('p', {
+    staticClass: "message-user"
+  }, [_vm._v(_vm._s(_vm.message.user.name))]), _vm._v(" "), _c('p', {
+    staticClass: "message-content"
+  }, [_vm._v(_vm._s(_vm.message.message))])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -42724,8 +42736,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         sendMessage: function sendMessage() {
             if (this.message) {
                 this.$emit('sent', {
-                    content: this.message,
-                    user: 'Jack'
+                    message: this.message,
+                    user: {
+                        name: $('.navbar-right .dropdown-toggle').text()
+                    }
                 });
                 this.message = '';
             }
