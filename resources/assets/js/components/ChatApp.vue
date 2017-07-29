@@ -1,5 +1,5 @@
 <template>
-    <div class="chat-app">
+    <div class="col-md-8 col-md-offset-2">
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <h4>Chat Room</h4>
@@ -35,11 +35,7 @@
 </script>
 
 <style type="text/scss" lang="scss" scoped>
-    .chat-app {
-        width: 900px;
-        margin: 50px auto;
-        .panel-body {
-            padding: 15px 0;
-        }
+    .panel-body {
+        padding: 15px 0;
     }
 </style>

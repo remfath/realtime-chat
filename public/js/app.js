@@ -42268,7 +42268,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n.chat-app[data-v-68e34377] {\n  width: 900px;\n  margin: 50px auto;\n}\n.chat-app .panel-body[data-v-68e34377] {\n    padding: 15px 0;\n}\n", ""]);
+exports.push([module.i, "\n.panel-body[data-v-68e34377] {\n  padding: 15px 0;\n}\n", ""]);
 
 // exports
 
@@ -42777,7 +42777,7 @@ if (false) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: "chat-app"
+    staticClass: "col-md-8 col-md-offset-2"
   }, [_c('div', {
     staticClass: "panel panel-primary"
   }, [_vm._m(0), _vm._v(" "), _c('div', {
