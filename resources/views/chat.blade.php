@@ -11,10 +11,8 @@
 </head>
 <body>
     <div id="app">
-        <h1>Chat Room</h1>
-        <chat-log :messages="messages"></chat-log>
-        <chat-composer @sent="addMessage"></chat-composer>
+        <chat-app></chat-app>
     </div>
-    <script src="js/app.js"></script>
+    <script src="js/app.js?v=343"></script>
 </body>
 </html>

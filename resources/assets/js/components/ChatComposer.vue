@@ -1,7 +1,7 @@
 <template>
     <div class="chat-composer">
-        <input type="text" placeholder="Enter your message" v-model="message" @keyup.enter="sendMessage">
-        <button class="btn btn-primary" @click="sendMessage">Send</button>
+        <textarea v-model="message" @keyup.enter="sendMessage" class="composer-input">
+    </textarea>
     </div>
 </template>
 
@@ -15,11 +15,13 @@
         },
         methods: {
             sendMessage() {
-                this.$emit('sent', {
-                    content: this.message,
-                    user: 'Jack'
-                });
-                this.message = '';
+                if (this.message) {
+                    this.$emit('sent', {
+                        content: this.message,
+                        user: 'Jack'
+                    });
+                    this.message = '';
+                }
             }
         }
     }
@@ -27,12 +29,16 @@
 
 <style type="text/scss" lang="scss" scoped>
     .chat-composer {
-        display: flex;
-        input {
-            flex: 1 auto;
-        }
-        button {
-            border-radius: 0;
-        }
+        border-top: 1px solid #d3e0e9;
+    }
+
+    .composer-input {
+        width: 100%;
+        height: 150px;
+        padding: 15px;
+        border: none;
+        resize: none;
+        overflow: auto;
+        outline: none;
     }
 </style>

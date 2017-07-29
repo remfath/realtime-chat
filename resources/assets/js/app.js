@@ -14,20 +14,11 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('chat-message', require('./components/ChatMessage.vue'));
-Vue.component('chat-log', require('./components/ChatLog.vue'));
-Vue.component('chat-composer', require('./components/ChatComposer.vue'));
+import ChatApp from './components/ChatApp.vue';
 
 const app = new Vue({
     el: '#app',
-    data() {
-        return {
-            messages: []
-        }
-    },
-    methods: {
-        addMessage(message) {
-            this.messages.push(message);
-        }
+    components: {
+        ChatApp
     }
 });
