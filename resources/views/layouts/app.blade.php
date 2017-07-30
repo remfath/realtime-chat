@@ -11,7 +11,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}?v=344" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}?v={{ rand(1, 100) }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -75,6 +75,6 @@
     </div>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}?v=3454"></script>
+    <script src="{{ asset('js/app.js') }}?v={{ rand(1, 100) }}"></script>
 </body>
 </html>

@@ -20,6 +20,7 @@
 
 <style type="text/scss" lang="scss" scoped>
     .chat-log {
-        min-height: 350px;
+        height: 350px;
+        overflow-y: scroll;
     }
 </style>

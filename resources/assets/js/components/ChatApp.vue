@@ -19,14 +19,15 @@
     export default {
         data() {
             return {
-                messages: []
+                messages: [],
+                userInRooms: []
             }
         },
         methods: {
             addMessage(message) {
                 this.messages.push(message);
                 axios.post('/messages', message).then(response => {
-                    console.info(response.data);
+                    console.log(response.data);
                 });
             }
         },
@@ -37,7 +38,19 @@
         created() {
             axios.get('/messages').then(response => {
                 this.messages = response.data;
-            })
+            });
+
+            Echo.join('chat-room')
+                .here()
+                .joining()
+                .leaving()
+                .listen('MessagePosted', (e) => {
+                    console.info(e);
+                    this.messages.push({
+                        message: e.message.message,
+                        user: e.user
+                    });
+                });
         }
     }
 </script>

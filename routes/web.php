@@ -25,10 +25,13 @@ Route::get('/messages', function () {
 
 Route::post('/messages', function () {
     $user = Auth::user();
-    $message = request()->get('message');
-    $user->messages()->create([
-        'message' => $message,
+
+    $message = $user->messages()->create([
+        'message' => request()->get('message'),
     ]);
+
+    broadcast(new \App\Events\MessagePosted($message, $user))->toOthers();
+
     return ['status' => 'ok'];
 })->middleware('auth');
 
